@@ -1,11 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using MvcNetCoreEFMultiplesBBDD.Data;
 using MvcNetCoreEFMultiplesBBDD.Models;
 using Oracle.ManagedDataAccess.Client;
 
 namespace MvcNetCoreEFMultiplesBBDD.Repositories
 {
+    #region
+    //create or replace procedure SP_ALL_VEMPLEADOS
+    //(p_cursor_empleados out sys_refcursor)
+    //as
+    //begin
+    //open p_cursor_empleados from
+    //select* from V_EMPLEADOS;
+    //end;
+    #endregion
     public class RepositoryEmpleadosOracle: IRepositoryEmpleados
     {
         private HospitalContext context;

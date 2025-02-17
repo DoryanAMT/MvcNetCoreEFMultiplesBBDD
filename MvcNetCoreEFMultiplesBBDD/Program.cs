@@ -7,20 +7,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//ORACLE
+//builder.Services.AddTransient<IRepositoryEmpleados, RepositoryEmpleadosOracle>();
+//string connectionString = builder.Configuration.GetConnectionString("OracleHospital");
+//builder.Services.AddDbContext<HospitalContext>
+//    (options => options.UseOracle(connectionString
+//    , options => options.UseOracleSQLCompatibility
+//    (OracleSQLCompatibility.DatabaseVersion19)));
+
+//SQL SERVER
+//builder.Services.AddTransient<IRepositoryEmpleados ,RepositoryEmpleados>();
 //string connectionString = builder.Configuration.GetConnectionString("SqlHospital");
 //builder.Services.AddDbContext<HospitalContext>
 //    (options => options.UseSqlServer(connectionString));
 
-builder.Services.AddTransient<IRepositoryEmpleados, RepositoryEmpleadosOracle>();
-string connectionString = builder.Configuration.GetConnectionString("OracleHospital");
+//MYSQL
+builder.Services.AddTransient<IRepositoryEmpleados, RepositoryEmpleadosMySql>();
+string connectionString = builder.Configuration.GetConnectionString("MySqlHospital");
 builder.Services.AddDbContext<HospitalContext>
-    (options => options.UseOracle(connectionString
-    , options => options.UseOracleSQLCompatibility
-    (OracleSQLCompatibility.DatabaseVersion19)));
-
-//builder.Services.AddTransient<IRepositoryEmpleados ,RepositoryEmpleados>();
-
-
+    (options => options.UseMySQL(connectionString));
 
 var app = builder.Build();
 
